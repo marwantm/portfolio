@@ -140,7 +140,11 @@
           <a href="https://www.linkedin.com/in/-marwan-tamer" target="_blank" rel="noopener" aria-label="Visit Marwan's LinkedIn"><span class="contact-icon contact-icon-linkedin" aria-hidden="true">in</span><strong>linkedin.com/in/-marwan-tamer</strong><span aria-hidden="true">&#8599;</span></a>
         </div>
       </div>
-      <form class="contact-form" action="mailto:marwan.tamer.zakaria@gmail.com" method="GET" enctype="text/plain">
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New portfolio inquiry">
+        <input type="hidden" name="from_name" value="Portfolio Contact Form">
+        <input class="honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-heading"><span>Message Marwan</span><span class="form-status"><i></i> Available</span></div>
         <label for="name">Your name</label>
         <input type="text" id="name" name="name" placeholder="How should I address you?" required>
@@ -149,6 +153,7 @@
         <label for="message">What are you working on?</label>
         <textarea id="message" name="message" rows="5" placeholder="A few details about your board or idea..." required></textarea>
         <button type="submit" class="btn">Send message <span aria-hidden="true">&#8594;</span></button>
+        <p class="contact-form-message" role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </section>
@@ -165,9 +170,11 @@
     <script type="module" src="js/scroll-animations.js"></script>
   <script type="module">
     import { initNavigation } from './js/navigation.js';
-        import { initScrollAnimations } from './js/scroll-animations.js';
+    import { initScrollAnimations } from './js/scroll-animations.js';
+    import { initContactForm } from './js/contact-form.js';
     initNavigation();
-        initScrollAnimations();
+    initScrollAnimations();
+    initContactForm();
   </script>
 </body>
 </html>

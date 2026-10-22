@@ -16,7 +16,7 @@ export function initScrollAnimations() {
     animateElements.forEach(el => {
       const bounds = el.getBoundingClientRect();
       const start = window.innerHeight;
-      const revealProgress = Math.max(0, Math.min(1, (start - bounds.top) / 100));
+      const revealProgress = Math.max(0, Math.min(1, (start - bounds.top) / 80));
       const amount = bounds.bottom <= 0 ? 1 : revealProgress;
       el.style.opacity = amount;
       el.style.transform = `translateY(${(1 - amount) * 36}px) scale(${0.985 + amount * 0.015})`;
@@ -28,7 +28,9 @@ export function initScrollAnimations() {
     el.classList.add('pre-animation');
     el.style.opacity = '0';
     el.style.transform = 'translateY(36px) scale(.985)';
-    el.style.transitionDelay = `${Math.min(i * 0.03, 0.18)}s`;
+    el.style.transitionDelay = el.matches('.contact-links a')
+      ? '0s'
+      : `${Math.min(i * 0.025, 0.15)}s`;
   });
 
   let frame = 0;

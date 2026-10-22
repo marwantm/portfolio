@@ -1,21 +1,38 @@
 // navigation.js – smooth scrolling and sticky top navigation
 export function initNavigation() {
+  let scrollFrame = 0;
+  let restoreScrollBehavior = () => {};
+
   const smoothScrollTo = target => {
+    if (scrollFrame) cancelAnimationFrame(scrollFrame);
+    restoreScrollBehavior();
+
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    restoreScrollBehavior = () => {
+      root.style.scrollBehavior = previousScrollBehavior;
+      restoreScrollBehavior = () => {};
+    };
+
     const start = window.scrollY;
     const distance = target.getBoundingClientRect().top;
-    const duration = 1100;
+    const duration = 700;
     const startedAt = performance.now();
-    const easeInOut = progress => progress < 0.5
-      ? 2 * progress * progress
-      : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+    const easeOut = progress => 1 - Math.pow(1 - progress, 3);
 
     const animate = now => {
       const progress = Math.min((now - startedAt) / duration, 1);
-      window.scrollTo(0, start + distance * easeInOut(progress));
-      if (progress < 1) requestAnimationFrame(animate);
+      window.scrollTo(0, start + distance * easeOut(progress));
+      if (progress < 1) {
+        scrollFrame = requestAnimationFrame(animate);
+      } else {
+        scrollFrame = 0;
+        restoreScrollBehavior();
+      }
     };
 
-    requestAnimationFrame(animate);
+    scrollFrame = requestAnimationFrame(animate);
   };
 
   // Smooth scroll for anchors with data-scroll attribute
@@ -42,7 +59,13 @@ export function initNavigation() {
   // Sticky navigation – add .sticky class when scrolled past its initial position
   const nav = document.querySelector('.nav-primary');
   if (!nav) return;
-  if (!nav.classList.contains('intro-nav')) {
+  if (nav.classList.contains('intro-nav')) {
+    const updateIntroNav = () => {
+      nav.classList.toggle('nav--hidden', window.scrollY >= 20);
+    };
+    window.addEventListener('scroll', updateIntroNav, { passive: true });
+    updateIntroNav();
+  } else {
     const navOffset = nav.offsetTop;
     const onScroll = () => {
       if (window.scrollY > navOffset) {
