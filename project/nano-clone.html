@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino Nano Clone – Project</title>
+  <meta name="description" content="Independent 2‑layer Arduino Nano clone design, DRC/ERC clean, manufacturing planned.">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+</head>
+<body>
+  <!-- Top navigation (reuse) -->
+  <nav class="nav-primary sticky">
+    <div class="container">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#overview" data-scroll>Overview</a></li>
+        <li><a href="#schematic" data-scroll>Schematic</a></li>
+        <li><a href="#component-selection" data-scroll>Component Selection</a></li>
+        <li><a href="#pcb-layout" data-scroll>PCB Layout</a></li>
+        <li><a href="#drc-erc" data-scroll>DRC/ERC</a></li>
+        <li><a href="#render-3d" data-scroll>3D Render</a></li>
+        <li><a href="#manufacturing" data-scroll>Manufacturing Files</a></li>
+        <li><a href="#learned" data-scroll>What I Learned</a></li>
+      </ul>
+          </div>
+  </nav>
+
+  <!-- Page layout container -->
+  <div class="container project-container">
+    <!-- Sidebar navigation (populated by JS) -->
+    <aside id="project-sidebar"></aside>
+    <!-- Main content -->
+    <main class="project-content">
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>This is an independent Arduino Nano clone design. The board is a 2‑layer PCB built around the ATmega328P MCU. Component values (crystal load caps, decoupling caps, resistor values) were derived from the ATmega328P datasheet and the official Arduino Nano reference schematic. The footprint for the MCU was independently verified against the mechanical package drawing before placement. The design passed DRC/ERC clean verification and manufacturing files (Gerbers, drill files, BOM) have been generated but the board has not yet been fabricated or electrically tested.</p>
+        <!-- Status block – populated by JS -->
+        <div id="project-status" class="status-block"></div>
+      </section>
+
+      <section id="schematic">
+        <h2>Schematic</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder schematic for Arduino Nano Clone"/>
+          <figcaption>Schematic – placeholder (image needed)</figcaption>
+        </figure>
+        <p>The schematic is organized into functional blocks (power, MCU, I/O) to aid readability and future modifications.</p>
+      </section>
+
+      <section id="component-selection">
+        <h2>Component Selection</h2>
+        <p>All component values were chosen based on the ATmega328P datasheet (e.g., 16 MHz crystal with 22 pF load caps) and standard design practice for decoupling. Footprints were cross‑checked against the manufacturer’s mechanical drawings.</p>
+      </section>
+
+      <section id="pcb-layout">
+        <h2>PCB Layout</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder PCB layout for Arduino Nano Clone"/>
+          <figcaption>PCB Layout – placeholder (image needed)</figcaption>
+        </figure>
+        <p>Component placement follows functional grouping; critical high‑current paths (VCC to MCU) were sized using IPC‑2221 trace‑width guidelines.</p>
+      </section>
+
+      <section id="drc-erc">
+        <h2>DRC / ERC</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder DRC/ERC report for Arduino Nano Clone"/>
+          <figcaption>DRC/ERC – placeholder (image needed)</figcaption>
+        </figure>
+        <p>DRC (design‑rule check) validates physical manufacturability (clearance, width). ERC (electrical rule check) validates net connectivity. The board passed both cleanly.</p>
+      </section>
+
+      <section id="render-3d">
+        <h2>3D Render</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/3d-front.jpg" alt="Arduino Nano Clone 3D front render"/>
+          <figcaption>3D Front</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder 3D back view for Arduino Nano Clone"/>
+          <figcaption>3D Back – placeholder (image needed)</figcaption>
+        </figure>
+        <p>The 3‑D model shows component placement and board thickness.</p>
+      </section>
+
+      <section id="manufacturing">
+        <h2>Manufacturing Files</h2>
+        <p>All manufacturing outputs (Gerbers, drill files, BOM CSV) are available in the repository:</p>
+        <p><a href="https://github.com/marwantm/arduino-nano-custom-board" target="_blank" rel="noopener">GitHub repo</a></p>
+      </section>
+
+      <section id="learned">
+        <h2>What I Learned</h2>
+        <p>I verified the ATmega328P footprint against the mechanical package drawing, performed trace‑width calculations per IPC‑2221, and practiced a disciplined schematic‑to‑layout workflow without relying on tutorial guidance.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>PCB Designer &#8226; Freelance © 2026</p>
+      <a href="../index.html" data-scroll>Back to home</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/navigation.js"></script>
+    <script type="module" src="../js/scroll-animations.js"></script>
+  <script type="module" src="../js/lightbox.js"></script>
+  <script type="module" src="../js/project-sidebar.js"></script>
+  <script type="module" src="../js/projects.js"></script>
+  <script type="module">
+    import { initNavigation } from '../js/navigation.js';
+        import { initScrollAnimations } from '../js/scroll-animations.js';
+    import { initLightbox } from '../js/lightbox.js';
+    import { initProjectSidebar } from '../js/project-sidebar.js';
+    import PROJECTS from '../js/projects.js';
+    // Populate status block for this page
+    const data = PROJECTS.find(p => p.id === 'nano-clone');
+    const statusDiv = document.getElementById('project-status');
+    if (data && statusDiv) {
+      statusDiv.innerHTML = `
+        <div class="badge ${data.badgeClass}">${data.badge}</div>
+        <p>Design Status: ${data.specs['Design Status']}</p>
+        <p>Manufacturing: ${data.specs['Manufacturing']}</p>
+      `;
+    }
+    initNavigation();
+        initScrollAnimations();
+    initLightbox();
+    initProjectSidebar();
+  </script>
+</body>
+</html>

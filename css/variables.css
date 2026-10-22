@@ -1,0 +1,16 @@
+/* Portfolio design system */
+:root {
+  --bg-primary: #0b0f0d;
+  --bg-surface: #121916;
+  --bg-elevated: #1a231e;
+  --text-primary: #edf2eb;
+  --text-secondary: #a9b5aa;
+  --text-muted: #748278;
+  --border: #2b3830;
+  --accent: #e7653c;
+  --accent-hover: #f07d56;
+  --accent-cool: #83b9a5;
+  --status-success: #4ea982;
+  --status-warning: #d59b4b;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+}

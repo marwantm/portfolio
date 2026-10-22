@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TI MSPM0 Development Board – Project</title>
+  <meta name="description" content="2‑layer TI MSPM0 development board, tutorial‑based build, DRC/ERC clean, manufacturing planned.">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav-primary sticky">
+    <div class="container">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#overview" data-scroll>Overview</a></li>
+        <li><a href="#schematic" data-scroll>Schematic</a></li>
+        <li><a href="#component-selection" data-scroll>Component Selection</a></li>
+        <li><a href="#pcb-layout" data-scroll>PCB Layout</a></li>
+        <li><a href="#drc-erc" data-scroll>DRC/ERC</a></li>
+        <li><a href="#render-3d" data-scroll>3D Render</a></li>
+        <li><a href="#manufacturing" data-scroll>Manufacturing Files</a></li>
+        <li><a href="#learned" data-scroll>What I Learned</a></li>
+      </ul>
+          </div>
+  </nav>
+
+  <div class="container project-container">
+    <aside id="project-sidebar"></aside>
+    <main class="project-content">
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>A 2‑layer development board built around the MSPM0G3507SPTR Arm Cortex‑M0+ MCU from Texas Instruments. It features USB‑C power/data via a USB‑UART bridge, an SWD programming header, an onboard 3.3 V LDO regulator, and an onboard I²C accelerometer. The board follows a tutorial‑based workflow and serves as a compact general‑purpose MSPM0 platform.</p>
+        <div id="project-status" class="status-block"></div>
+      </section>
+
+      <section id="schematic">
+        <h2>Schematic</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/schematic.png" alt="TI MSPM0 schematic"/>
+          <figcaption>Schematic</figcaption>
+        </figure>
+        <p>The schematic groups functional blocks for power, MCU, USB, and sensors.</p>
+      </section>
+
+      <section id="component-selection">
+        <h2>Component Selection</h2>
+        <p>Components were chosen based on TI datasheets and tutorial guidance. Custom symbols were created for the MSPM0 MCU and accelerometer. The USB‑C connector and LDO were selected for reliable 5 V to 3.3 V conversion.</p>
+      </section>
+
+      <section id="pcb-layout">
+        <h2>PCB Layout</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/pcb-top.png" alt="TI MSPM0 PCB top layout"/>
+          <figcaption>PCB Layout – top layer</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/pcb-bottom.png" alt="TI MSPM0 PCB bottom layout"/>
+          <figcaption>PCB Layout – bottom layer</figcaption>
+        </figure>
+        <p>Layout decisions emphasized custom schematic symbol creation, layer assignment (signal / ground / power), and component placement strategies learned from the tutorial.</p>
+      </section>
+
+      <section id="drc-erc">
+        <h2>DRC / ERC</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/board.png" alt="TI MSPM0 board preview"/>
+          <figcaption>DRC/ERC – report image not provided</figcaption>
+        </figure>
+        <p>All DRC and ERC checks passed cleanly.</p>
+      </section>
+
+      <section id="render-3d">
+        <h2>3D Render</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/3d-front.png" alt="TI MSPM0 3D front render"/>
+          <figcaption>3D Front</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/ti-mspm0/3d-back.png" alt="TI MSPM0 3D back render"/>
+          <figcaption>3D Back</figcaption>
+        </figure>
+        <p>3‑D visualization shows board thickness and component placement.</p>
+      </section>
+
+      <section id="manufacturing">
+        <h2>Manufacturing Files</h2>
+        <p>All manufacturing outputs are available in the repository.</p>
+        <p><a href="https://github.com/marwantm/TI-MSPM0" target="_blank" rel="noopener">GitHub repo</a></p>
+      </section>
+
+      <section id="learned">
+        <h2>What I Learned</h2>
+        <ul>
+          <li>Creating custom schematic symbols.</li>
+          <li>Understanding multilayer concepts and layer stack‑ups.</li>
+          <li>Roles of signal, power, and ground layers.</li>
+          <li>PCB manufacturing basics.</li>
+          <li>Component placement strategies.</li>
+          <li>Professional PCB layout workflow.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>PCB Designer &#8226; Freelance © 2026</p>
+      <a href="../index.html" data-scroll>Back to home</a>
+    </div>
+  </footer>
+
+  <!-- Scripts – initialise page –>
+  <script type="module" src="../js/navigation.js"></script>
+    <script type="module" src="../js/scroll-animations.js"></script>
+  <script type="module" src="../js/lightbox.js"></script>
+  <script type="module" src="../js/project-sidebar.js"></script>
+  <script type="module" src="../js/projects.js"></script>
+  <script type="module">
+    import { initNavigation } from '../js/navigation.js';
+        import { initScrollAnimations } from '../js/scroll-animations.js';
+    import { initLightbox } from '../js/lightbox.js';
+    import { initProjectSidebar } from '../js/project-sidebar.js';
+    import PROJECTS from '../js/projects.js';
+    const data = PROJECTS.find(p => p.id === 'ti-mspm0');
+    const statusDiv = document.getElementById('project-status');
+    if (data && statusDiv) {
+      statusDiv.innerHTML = `
+        <div class="badge ${data.badgeClass}">${data.badge}</div>
+        <p>Design Status: ${data.specs['Design Status']}</p>
+        <p>Manufacturing: ${data.specs['Manufacturing']}</p>
+      `;
+    }
+    initNavigation();
+        initScrollAnimations();
+    initLightbox();
+    initProjectSidebar();
+  </script>
+</body>
+</html>

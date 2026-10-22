@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Sensor Board – Project</title>
+  <meta name="description" content="Custom IoT PCB with ESP32‑C3‑02 and TP4056 charger, tutorial‑based design, DRC/ERC clean, manufacturing planned.">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav-primary sticky">
+    <div class="container">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#overview" data-scroll>Overview</a></li>
+        <li><a href="#schematic" data-scroll>Schematic</a></li>
+        <li><a href="#component-selection" data-scroll>Component Selection</a></li>
+        <li><a href="#pcb-layout" data-scroll>PCB Layout</a></li>
+        <li><a href="#drc-erc" data-scroll>DRC/ERC</a></li>
+        <li><a href="#render-3d" data-scroll>3D Render</a></li>
+        <li><a href="#manufacturing" data-scroll>Manufacturing Files</a></li>
+        <li><a href="#learned" data-scroll>What I Learned</a></li>
+      </ul>
+          </div>
+  </nav>
+
+  <div class="container project-container">
+    <aside id="project-sidebar"></aside>
+    <main class="project-content">
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>Custom IoT PCB built around the ESP32‑C3‑02 SoC, featuring integrated power management via a TP4056 Li‑ion charger, USB‑C connector for power and data, and various sensors (BME280, light, sound, accelerometer). The board is designed for data logging and environmental sensing applications. All schematic and layout work was performed in KiCad, and the design is DRC/ERC clean but has not yet been fabricated.</p>
+        <div id="project-status" class="status-block"></div>
+      </section>
+
+      <section id="schematic">
+        <h2>Schematic</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/schematic-page-1.png" alt="ESP32 Sensor Board schematic page 1"/>
+          <figcaption>Schematic – page 1</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/schematic-page-2.png" alt="ESP32 Sensor Board schematic page 2"/>
+          <figcaption>Schematic – page 2</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/schematic-page-3.png" alt="ESP32 Sensor Board schematic page 3"/>
+          <figcaption>Schematic – page 3</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/schematic-page-4.png" alt="ESP32 Sensor Board schematic page 4"/>
+          <figcaption>Schematic – page 4</figcaption>
+        </figure>
+        <p>The schematic captures power management, sensor interfaces, and MCU connections.</p>
+      </section>
+
+      <section id="component-selection">
+        <h2>Component Selection</h2>
+        <p>Components were selected based on datasheets for ESP32‑C3‑02, TP4056, BME280, and other peripherals. Footprints were verified against mechanical drawings, and the power‑path design follows recommended guidelines for Li‑ion charging.</p>
+      </section>
+
+      <section id="pcb-layout">
+        <h2>PCB Layout</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/pcb-top.png" alt="ESP32 Sensor Board PCB top layout"/>
+          <figcaption>PCB Layout – top layer</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/pcb-bottom.png" alt="ESP32 Sensor Board PCB bottom layout"/>
+          <figcaption>PCB Layout – bottom layer</figcaption>
+        </figure>
+        <p>The 2‑layer board arranges components to minimize trace length for high‑speed SPI/I²C signals and places the TP4056 charger near the USB‑C connector for efficient power routing.</p>
+      </section>
+
+      <section id="drc-erc">
+        <h2>DRC / ERC</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/drc-erc.png" alt="ESP32 Sensor Board DRC and ERC report"/>
+          <figcaption>DRC/ERC report</figcaption>
+        </figure>
+        <p>All design‑rule and electrical‑rule checks passed without errors.</p>
+      </section>
+
+      <section id="render-3d">
+        <h2>3D Render</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/3d-front.png" alt="ESP32 Sensor Board 3D front render"/>
+          <figcaption>3D Front</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/esp32-sensor/3d-back.png" alt="ESP32 Sensor Board 3D back render"/>
+          <figcaption>3D Back</figcaption>
+        </figure>
+        <p>The 3‑D model visualizes component placement and board thickness for review.</p>
+      </section>
+
+      <section id="manufacturing">
+        <h2>Manufacturing Files</h2>
+        <p>All manufacturing outputs (Gerbers, drill files, BOM) are stored in the project repository.</p>
+        <p><a href="https://github.com/marwantm/esp32-sensor-board" target="_blank" rel="noopener">GitHub repo</a></p>
+      </section>
+
+      <section id="learned">
+        <h2>What I Learned</h2>
+        <ul>
+          <li>Power‑management integration using TP4056 charger IC.</li>
+          <li>Sensor interfacing (BME280, ambient light, microphone) with ESP32‑C3.</li>
+          <li>Designing PCB for low‑power IoT applications.</li>
+          <li>Creating a compact, 2‑layer layout while respecting clearance rules.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>PCB Designer &#8226; Freelance © 2026</p>
+      <a href="../index.html" data-scroll>Back to home</a>
+    </div>
+  </footer>
+
+  <!-- Scripts – initialise page –>
+  <script type="module" src="../js/navigation.js"></script>
+    <script type="module" src="../js/scroll-animations.js"></script>
+  <script type="module" src="../js/lightbox.js"></script>
+  <script type="module" src="../js/project-sidebar.js"></script>
+  <script type="module" src="../js/projects.js"></script>
+  <script type="module">
+    import { initNavigation } from '../js/navigation.js';
+        import { initScrollAnimations } from '../js/scroll-animations.js';
+    import { initLightbox } from '../js/lightbox.js';
+    import { initProjectSidebar } from '../js/project-sidebar.js';
+    import PROJECTS from '../js/projects.js';
+    const data = PROJECTS.find(p => p.id === 'esp32-sensor');
+    const statusDiv = document.getElementById('project-status');
+    if (data && statusDiv) {
+      statusDiv.innerHTML = `
+        <div class="badge ${data.badgeClass}">${data.badge}</div>
+        <p>Design Status: ${data.specs['Design Status']}</p>
+        <p>Manufacturing: ${data.specs['Manufacturing']}</p>
+      `;
+    }
+    initNavigation();
+        initScrollAnimations();
+    initLightbox();
+    initProjectSidebar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STM32WB Bluetooth Development Board – Project</title>
+  <meta name="description" content="4‑layer STM32WB55CEU Bluetooth development board, tutorial‑based build, DRC/ERC clean, manufacturing planned.">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/project-page.css">
+</head>
+<body>
+  <!-- Top navigation -->
+  <nav class="nav-primary sticky">
+    <div class="container">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#overview" data-scroll>Overview</a></li>
+        <li><a href="#schematic" data-scroll>Schematic</a></li>
+        <li><a href="#component-selection" data-scroll>Component Selection</a></li>
+        <li><a href="#pcb-layout" data-scroll>PCB Layout</a></li>
+        <li><a href="#drc-erc" data-scroll>DRC/ERC</a></li>
+        <li><a href="#render-3d" data-scroll>3D Render</a></li>
+        <li><a href="#manufacturing" data-scroll>Manufacturing Files</a></li>
+        <li><a href="#learned" data-scroll>What I Learned</a></li>
+      </ul>
+          </div>
+  </nav>
+
+  <div class="container project-container">
+    <aside id="project-sidebar"></aside>
+    <main class="project-content">
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>A 4‑layer STM32WB55‑based Bluetooth Low Energy development board, designed in KiCad by following Phil's Lab tutorial. It includes USB‑C power/data, a UART header, an SWD programming interface via Tag‑Connect TC2030, and an RF front‑end with a u.FL antenna connector. The board is intended as a learning platform; the design is fully verified (DRC/ERC clean) but has not yet been manufactured.</p>
+        <!-- Status block populated by JS -->
+        <div id="project-status" class="status-block"></div>
+        <!-- Spec table will be added by JS – not needed here -->
+      </section>
+
+      <section id="schematic">
+        <h2>Schematic</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/schematic.png" alt="STM32WB Bluetooth schematic"/>
+          <figcaption>Schematic</figcaption>
+        </figure>
+        <p>The schematic is structured into functional blocks (power, MCU, USB, RF front‑end) to improve readability.</p>
+      </section>
+
+      <section id="component-selection">
+        <h2>Component Selection</h2>
+        <p>Components were chosen based on the STM32WB55 datasheet and tutorial guidance. The USB‑C connector supplies 5 V which is regulated to 3.3 V via an onboard LDO. All footprints were verified against manufacturer drawings.</p>
+      </section>
+
+      <section id="pcb-layout">
+        <h2>PCB Layout</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/pcb-top.png" alt="STM32WB Bluetooth PCB top layout"/>
+          <figcaption>PCB Layout – top layer</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/pcb-bottom.png" alt="STM32WB Bluetooth PCB bottom layout"/>
+          <figcaption>PCB Layout – bottom layer</figcaption>
+        </figure>
+        <p>The 4‑layer stack‑up (Signal / GND / Power / Signal) was used. Critical nets (high‑speed USB, RF) were routed with controlled impedance guidelines where appropriate.</p>
+      </section>
+
+      <section id="drc-erc">
+        <h2>DRC / ERC</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/drc-erc.png" alt="STM32WB Bluetooth DRC and ERC report"/>
+          <figcaption>DRC/ERC report</figcaption>
+        </figure>
+        <p>All design‑rule and electrical‑rule checks passed cleanly.</p>
+      </section>
+
+      <section id="render-3d">
+        <h2>3D Render</h2>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/3d-front.png" alt="STM32WB Bluetooth 3D front render"/>
+          <figcaption>3D Front</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/stm32wb-bluetooth/3d-back.png" alt="STM32WB Bluetooth 3D back render"/>
+          <figcaption>3D Back</figcaption>
+        </figure>
+        <p>The 3‑D model shows component placement and board thickness.</p>
+      </section>
+
+      <section id="manufacturing">
+        <h2>Manufacturing Files</h2>
+        <p>All manufacturing outputs (Gerbers, drill files, BOM CSV) are available in the repository.</p>
+        <p><a href="https://github.com/marwantm/STM32-Bluetooth" target="_blank" rel="noopener">GitHub repo</a></p>
+      </section>
+
+      <section id="learned">
+        <h2>What I Learned</h2>
+        <ul>
+          <li>Structuring a schematic into functional blocks for clarity.</li>
+          <li>Layer stack‑up planning for a 4‑layer board (signal / ground / power / signal).</li>
+          <li>VIA and fiducial placement for accurate assembly.</li>
+          <li>Designing dedicated ground and power planes.</li>
+          <li>Routing strategies for RF, high‑speed, and power nets and resolving DRC/ERC violations.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>PCB Designer &#8226; Freelance © 2026</p>
+      <a href="../index.html" data-scroll>Back to home</a>
+    </div>
+  </footer>
+
+  <!-- Scripts – load modules and initialise page –>
+  <script type="module" src="../js/navigation.js"></script>
+    <script type="module" src="../js/scroll-animations.js"></script>
+  <script type="module" src="../js/lightbox.js"></script>
+  <script type="module" src="../js/project-sidebar.js"></script>
+  <script type="module" src="../js/projects.js"></script>
+  <script type="module">
+    import { initNavigation } from '../js/navigation.js';
+        import { initScrollAnimations } from '../js/scroll-animations.js';
+    import { initLightbox } from '../js/lightbox.js';
+    import { initProjectSidebar } from '../js/project-sidebar.js';
+    import PROJECTS from '../js/projects.js';
+    const data = PROJECTS.find(p => p.id === 'stm32wb-bluetooth');
+    const statusDiv = document.getElementById('project-status');
+    if (data && statusDiv) {
+      statusDiv.innerHTML = `
+        <div class="badge ${data.badgeClass}">${data.badge}</div>
+        <p>Design Status: ${data.specs['Design Status']}</p>
+        <p>Manufacturing: ${data.specs['Manufacturing']}</p>
+      `;
+    }
+    initNavigation();
+        initScrollAnimations();
+    initLightbox();
+    initProjectSidebar();
+  </script>
+</body>
+</html>

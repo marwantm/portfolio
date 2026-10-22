@@ -1,0 +1,54 @@
+/* Project page layout – sidebar + content, responsive */
+
+.project-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 991px) {
+  .project-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-sidebar {
+  position: sticky;
+  top: 80px; /* below top nav */
+  height: fit-content;
+}
+
+.project-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-sidebar a {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--text-primary);
+}
+
+.project-content section {
+  margin-bottom: 3rem;
+}
+
+.status-block {
+  background: var(--bg-elevated);
+  border-left: 4px solid var(--accent);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+.spec-table th,
+.spec-table td {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  text-align: left;
+}

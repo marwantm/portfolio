@@ -1,0 +1,80 @@
+/* Base styles – reset, typography, layout */
+
+/* Box‑sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--bg-primary);
+  scroll-behavior: smooth;
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: radial-gradient(var(--border) 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility classes */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.section {
+  padding: 7rem 0;
+}
+
+/* Larger typographic headings */
+#hero h1 { font-size: clamp(3.5rem, 9vw, 8.5rem); letter-spacing: -0.06em; }
+section h2 { font-size: clamp(2rem, 4vw, 4rem); letter-spacing: -0.04em; }
+
+.sticky {
+  position: sticky;
+  top: 0;
+  background: rgba(11, 15, 13, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  border-bottom: 1px solid transparent;
+  box-shadow: 0 8px 25px rgba(34, 45, 37, 0.04);
+}
+
+::selection { background: var(--accent); color: #0b0f0d; }
+
+@media (max-width: 700px) {
+  .container { width: calc(100% - 2.5rem); }
+  .section { padding: 4.5rem 0; }
+}
