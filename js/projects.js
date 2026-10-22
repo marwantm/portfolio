@@ -13,11 +13,14 @@ const PROJECTS = [
       "Tool": "KiCad 9"
     },
     images: {
-      schematic: "assets/images/nano-clone/placeholder.png",
-      pcbTop: "assets/images/nano-clone/placeholder.png",
-      pcbBottom: "assets/images/nano-clone/placeholder.png",
+      schematic: [
+        "assets/images/nano-clone/schematic-page-1.png",
+        "assets/images/nano-clone/schematic-page-2.png"
+      ],
+      pcbTop: "assets/images/nano-clone/pcb-top.png",
+      pcbBottom: "assets/images/nano-clone/pcb-bottom.png",
       render3DFront: "assets/images/nano-clone/3d-front.jpg",
-      render3DBack: "assets/images/nano-clone/placeholder.png"
+      render3DBack: "assets/images/nano-clone/3d-back.jpg"
     },
     repo: "https://github.com/marwantm/arduino-nano-custom-board"
   },

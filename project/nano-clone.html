@@ -37,15 +37,17 @@
       <section id="overview">
         <h2>Overview</h2>
         <p>This is an independent Arduino Nano clone design. The board is a 2‑layer PCB built around the ATmega328P MCU. Component values (crystal load caps, decoupling caps, resistor values) were derived from the ATmega328P datasheet and the official Arduino Nano reference schematic. The footprint for the MCU was independently verified against the mechanical package drawing before placement. The design passed DRC/ERC clean verification and manufacturing files (Gerbers, drill files, BOM) have been generated but the board has not yet been fabricated or electrically tested.</p>
-        <!-- Status block – populated by JS -->
-        <div id="project-status" class="status-block"></div>
       </section>
 
       <section id="schematic">
         <h2>Schematic</h2>
         <figure>
-          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder schematic for Arduino Nano Clone"/>
-          <figcaption>Schematic – placeholder (image needed)</figcaption>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/schematic-page-1.png" alt="Arduino Nano Clone schematic page 1"/>
+          <figcaption>Schematic – page 1</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/schematic-page-2.png" alt="Arduino Nano Clone schematic page 2"/>
+          <figcaption>Schematic – page 2</figcaption>
         </figure>
         <p>The schematic is organized into functional blocks (power, MCU, I/O) to aid readability and future modifications.</p>
       </section>
@@ -58,8 +60,12 @@
       <section id="pcb-layout">
         <h2>PCB Layout</h2>
         <figure>
-          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder PCB layout for Arduino Nano Clone"/>
-          <figcaption>PCB Layout – placeholder (image needed)</figcaption>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/pcb-top.png" alt="Arduino Nano Clone PCB top layout"/>
+          <figcaption>PCB Layout – top layer</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/pcb-bottom.png" alt="Arduino Nano Clone PCB bottom layout"/>
+          <figcaption>PCB Layout – bottom layer</figcaption>
         </figure>
         <p>Component placement follows functional grouping; critical high‑current paths (VCC to MCU) were sized using IPC‑2221 trace‑width guidelines.</p>
       </section>
@@ -67,8 +73,12 @@
       <section id="drc-erc">
         <h2>DRC / ERC</h2>
         <figure>
-          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder DRC/ERC report for Arduino Nano Clone"/>
-          <figcaption>DRC/ERC – placeholder (image needed)</figcaption>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/drc.png" alt="Arduino Nano Clone DRC report"/>
+          <figcaption>DRC report</figcaption>
+        </figure>
+        <figure>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/erc.png" alt="Arduino Nano Clone ERC report"/>
+          <figcaption>ERC report</figcaption>
         </figure>
         <p>DRC (design‑rule check) validates physical manufacturability (clearance, width). ERC (electrical rule check) validates net connectivity. The board passed both cleanly.</p>
       </section>
@@ -80,8 +90,8 @@
           <figcaption>3D Front</figcaption>
         </figure>
         <figure>
-          <img class="lightbox-trigger" src="../assets/images/nano-clone/placeholder.png" alt="Placeholder 3D back view for Arduino Nano Clone"/>
-          <figcaption>3D Back – placeholder (image needed)</figcaption>
+          <img class="lightbox-trigger" src="../assets/images/nano-clone/3d-back.jpg" alt="Arduino Nano Clone 3D back render"/>
+          <figcaption>3D Back</figcaption>
         </figure>
         <p>The 3‑D model shows component placement and board thickness.</p>
       </section>
@@ -117,17 +127,6 @@
         import { initScrollAnimations } from '../js/scroll-animations.js';
     import { initLightbox } from '../js/lightbox.js';
     import { initProjectSidebar } from '../js/project-sidebar.js';
-    import PROJECTS from '../js/projects.js';
-    // Populate status block for this page
-    const data = PROJECTS.find(p => p.id === 'nano-clone');
-    const statusDiv = document.getElementById('project-status');
-    if (data && statusDiv) {
-      statusDiv.innerHTML = `
-        <div class="badge ${data.badgeClass}">${data.badge}</div>
-        <p>Design Status: ${data.specs['Design Status']}</p>
-        <p>Manufacturing: ${data.specs['Manufacturing']}</p>
-      `;
-    }
     initNavigation();
         initScrollAnimations();
     initLightbox();
